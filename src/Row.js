@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios.js";
 import "./Row.css";
-//import YouTube from "react-youtube";
-//import movieTrailer from "movie-trailer";
+import ReactPlayer from "react-player";
+import gameInfo from "./GameInfo";
 
-//const base_url = "https://image.tmdb.org/t/p/original/";
-
-function Row({ title, fetchUrl, isLargeRow }) {
+function Row({ title, fetchUrl }) {
   const [games, setGames] = useState([]);
-  //const [trailerUrl, setTrailerUrl] = useState("");
+  const gameInfos = gameInfo(games?.id);
 
   // A snippet of code which runs on a specific condition
   useEffect(() => {
@@ -20,45 +18,27 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fetchData();
   }, [fetchUrl]);
-
-  /*const opts = {
-    height: "390",
-    width: "100%",
-    playerVars: {
-      autoplay: 1,
-    },
-  };
-
-    const handleClick = (movie) => {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      movieTrailer(movie?.name || "")
-        .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-        })
-        .catch((error) => console.log(error));
-    }
-  };
-*/
+  console.log(games);
   return (
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {games.map((movie) => (
-          <img
-            key={movie.id}
-            //onClick={() => handleClick(movie)}
-            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-            src={`${
-              isLargeRow ? movie.background_image : movie.background_image
-            }`}
-            alt={movie.name}
-          />
+        {games.map((game) => (
+          <div className="row__poster">
+            <ReactPlayer
+              controls={false}
+              width={300}
+              height={200}
+              url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+            ></ReactPlayer>
+            <h3>Game Name</h3>
+            <p>Realease Date :</p>
+            <p>Genres :</p>
+            <p>Classement :</p>
+          </div>
         ))}
       </div>
-    </div> //{trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+    </div>
   );
 }
 

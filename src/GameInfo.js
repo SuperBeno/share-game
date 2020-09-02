@@ -10,7 +10,7 @@ function GameInfo(props) {
       setGame(request.data);
       return request;
     }
-    fetchData(props.gameID);
+    fetchData(props?.gameID);
   }, [props]);
   return game;
 }

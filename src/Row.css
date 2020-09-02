@@ -1,30 +1,27 @@
 .row {
   color: white;
 }
+
 .row__posters {
   display: flex;
-  overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px;
-  scrollbar-width: none;
 }
 
 .row__poster {
   object-fit: contain;
-  width: 100%;
-  min-height: 200px;
-  margin-right: 10px;
-  transition: transform 450ms;
+  background-color: #011111;
+  padding: 50px;
+  margin: 10px;
+  border-radius: 10px;
+  max-width: 300px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px;
+  min-height: 400px;
 }
 
-.row__poster:hover {
-  transform: scale(1.1);
+.row__poster > h3 {
+  padding: 10px;
 }
 
-.row__posterLarge {
-  max-height: 250px;
-}
-
-.row__posterLarge:hover {
-  transform: scale(1.2);
+.row__poster > p {
+  padding: 10px 0px;
 }
